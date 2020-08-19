@@ -1,0 +1,58 @@
+﻿@model Qed.Models.Knjiga
+
+@{
+    ViewBag.Title = "Izbriši";
+}
+    <h2>@Html.DisplayFor(model => model.Naslov)</h2>
+    <h6>@Html.DisplayFor(model => model.Autor)</h6>
+
+<div>
+    <h4>Knjiga</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naklada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naklada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumDodavanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumDodavanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uploader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uploader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bookirana)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bookirana)
+        </dd>
+
+    </dl>
+
+    <h3>Jeste li sigurni da želite izbrisati ovu knjigu?</h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Izbriši" class="btn btn-default" /> |
+            @Html.ActionLink("Povratak", "MojeKnjige")
+        </div>
+    }
+</div>

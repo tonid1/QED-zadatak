@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Qed.Models.Knjiga>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sve knjige</h2>
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Dodaj novu knjigu", "Create")
+}
+else
+{
+    <br />
+}
+
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naslov)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Autor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naklada)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naslov)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Autor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naklada)
+        </td>
+        <td>
+            @if (!item.Bookirana)
+            {
+                @Html.ActionLink("Bookiraj", "Booking", new { id = item.Id })
+            }
+            else
+            {
+                <p>Ova knjiga je trenutno zauzeta</p>
+            }
+        </td>
+    </tr>
+}
+
+</table>
